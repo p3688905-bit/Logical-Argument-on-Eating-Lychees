@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>食荔支・思辨解讀｜現象・心境・抉擇</title>
+<!-- 字型：楷體（標題／詩句／印章）＋宋體（內文），兩者皆完整涵蓋繁中字形，避免混字 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/lxgw-wenkai-tc@5.3.0/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/lxgw-wenkai-tc@5.3.0/700.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-serif-tc@5.3.0/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-serif-tc@5.3.0/500.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-serif-tc@5.3.0/700.css">
+<style>
+:root{
+  --paper:#f2e7cf;
+  --paper2:#e8dabb;
+  --card:#fcf6e7;
+  --ink:#2c2620;
+  --ink-soft:#5f5445;
+  --cinnabar:#a02c1e;
+  --cinnabar-dark:#7a1e13;
+  --jade:#33655a;
+  --jade-dark:#22463e;
+  --dai:#2c4a5a;
+  --gold:#a5802e;
+  --line:#cdb78d;
+  --line-soft:rgba(205,183,141,.55);
+  --shadow:0 10px 28px rgba(78,58,28,.14);
+  /* 楷體：標題、詩句、印章、按鈕 */
+  --kai:"LXGW WenKai TC","Noto Serif TC","Kaiti TC","DFKai-SB",serif;
+  /* 宋體：內文 */
+  --song:"Noto Serif TC","Songti TC","Source Han Serif TC","PMingLiU",serif;
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23g)'/%3E%3C/svg%3E");
+  --lattice:repeating-linear-gradient(45deg,rgba(165,128,46,.055) 0 2px,transparent 2px 9px),
+            repeating-linear-gradient(-45deg,rgba(165,128,46,.055) 0 2px,transparent 2px 9px);
+  --ruled:repeating-linear-gradient(90deg,transparent 0 32px,rgba(165,128,46,.10) 32px 33px);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--song);
+  font-weight:400;
+  color:var(--ink);
+  line-height:1.9;
+  letter-spacing:.02em;
+  background-color:var(--paper);
+  background-image:
+    radial-gradient(circle at 12% 6%, rgba(160,44,30,.06), transparent 42%),
+    radial-gradient(circle at 88% 22%, rgba(51,101,90,.07), transparent 45%),
+    radial-gradient(circle at 50% 100%, rgba(165,128,46,.10), transparent 55%),
+    var(--lattice);
+  background-attachment:fixed;
+  position:relative;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+button{font-family:var(--song);}
+b{font-weight:700;color:#3a2f24;}
+.grain{
+  position:fixed;inset:0;z-index:9998;pointer-events:none;
+  background-image:var(--grain);opacity:.045;mix-blend-mode:multiply;
+}
+::selection{background:rgba(160,44,30,.22);}
+
+/* ===== Header 卷軸 ===== */
+header{
+  position:relative;padding:46px 16px 30px;overflow:hidden;
+  border-bottom:1px solid var(--line);
+  background:
+    radial-gradient(circle at 50% -30%, rgba(165,128,46,.16), transparent 62%),
+    linear-gradient(180deg, rgba(252,246,231,.5), transparent 60%);
+}
+.mtn{position:absolute;left:0;bottom:0;width:100%;height:190px;pointer-events:none;z-index:0;opacity:.85;}
+.scroll{position:relative;z-index:2;max-width:1000px;margin:0 auto;}
+.rod{
+  height:15px;border-radius:9px;position:relative;
+  background:linear-gradient(180deg,#a9865a 0%,#7a5a34 42%,#4b351d 100%);
+  box-shadow:0 4px 12px rgba(60,40,18,.32), inset 0 1px 0 rgba(255,235,200,.35);
+}
+.rod::before,.rod::after{
+  content:"";position:absolute;top:-5px;width:25px;height:25px;border-radius:50%;
+  background:radial-gradient(circle at 34% 30%,#f0dca6,#a5802e 58%,#6a4c14);
+  box-shadow:0 2px 6px rgba(60,40,18,.4);
+}
+.rod::before{left:-16px;}
+.rod::after{right:-16px;}
+.scroll-body{
+  position:relative;text-align:center;padding:52px 26px 46px;
+  background:linear-gradient(180deg, rgba(255,252,242,.9), rgba(242,231,207,.75)), var(--ruled);
+  border-left:1px solid var(--line);border-right:1px solid var(--line);
+  box-shadow:inset 0 0 60px rgba(165,128,46,.10);
+}
+.scroll-body::after{content:"";position:absolute;inset:12px;pointer-events:none;border:1px solid var(--line-soft);}
+.lychee-art{
+  position:absolute;top:26px;right:14px;width:132px;height:auto;z-index:1;opacity:.9;
+  transform-origin:50% 8%;animation:sway 7s ease-in-out infinite;
+}
+.cloud-art{position:absolute;bottom:22px;left:16px;width:118px;height:auto;z-index:1;opacity:.4;}
+@keyframes sway{0%,100%{transform:rotate(-2.2deg);}50%{transform:rotate(2.6deg);}}
+
+.seal{
+  display:inline-block;
+  writing-mode:vertical-rl;
+  background:linear-gradient(160deg,#b1331f,#8c2416);
+  color:#fdf3e2;
+  font-family:var(--kai);font-weight:700;
+  font-size:1.02rem;line-height:1.4;letter-spacing:.3em;
+  padding:14px 7px 12px 10px;border-radius:4px;margin-bottom:22px;
+  box-shadow:0 6px 16px rgba(122,30,19,.34), inset 0 0 0 2px rgba(253,243,226,.35);
+  transform:rotate(-2deg);position:relative;
+}
+.seal::after{content:"";position:absolute;inset:3px;border:1px solid rgba(253,243,226,.30);border-radius:2px;}
+h1{
+  font-family:var(--kai);font-weight:700;
+  font-size:clamp(1.9rem,5.4vw,3.1rem);
+  letter-spacing:.12em;line-height:1.55;color:var(--ink);
+  text-shadow:0 1px 0 rgba(255,255,255,.6);
+}
+.subtitle{
+  color:var(--ink-soft);margin-top:14px;font-size:.98rem;letter-spacing:.26em;
+}
+.subtitle::before,.subtitle::after{content:"❖";color:var(--gold);margin:0 12px;font-size:.7rem;vertical-align:middle;}
+
+/* ===== 詩箋（橫排・置中，排版穩定） ===== */
+.poem-box{
+  position:relative;
+  margin:40px auto 0;max-width:620px;
+  text-align:center;
+  background:linear-gradient(180deg,#fffaf0,#f5ebd5);
+  border:1px solid var(--line);border-radius:6px;
+  padding:42px 26px 26px;
+  box-shadow:var(--shadow), inset 0 0 0 6px rgba(252,246,231,.75), inset 0 0 0 7px var(--line-soft);
+}
+.poem-box::before{
+  content:"〈食荔支〉";
+  position:absolute;top:-15px;left:50%;transform:translateX(-50%);
+  background:linear-gradient(160deg,#3d7568,#28544a);color:#f4efe0;
+  padding:4px 20px;border-radius:4px;white-space:nowrap;
+  font-family:var(--kai);font-weight:400;font-size:1rem;letter-spacing:.2em;
+  box-shadow:0 5px 14px rgba(40,84,74,.34);
+}
+.poem-box::after{
+  content:"";position:absolute;top:16px;right:16px;width:26px;height:26px;border-radius:3px;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(253,243,226,.35) 0 1px, transparent 1px 8px),
+    repeating-linear-gradient(90deg, rgba(253,243,226,.35) 0 1px, transparent 1px 8px),
+    linear-gradient(160deg,#b1331f,#8c2416);
+  box-shadow:inset 0 0 0 1px rgba(253,243,226,.35);
+  opacity:.9;
+}
+.poem-line{
+  font-family:var(--kai);font-weight:700;
+  font-size:clamp(1.1rem,4.4vw,1.45rem);
+  line-height:2.15;letter-spacing:.16em;
+  color:#33291f;padding-left:.16em;margin:0;
+}
+.poem-author{
+  margin-top:16px;padding-top:14px;
+  border-top:1px solid var(--line-soft);
+  color:var(--ink-soft);font-size:.92rem;letter-spacing:.06em;
+}
+
+/* ===== Nav 書籤 ===== */
+nav{
+  position:sticky;top:0;z-index:60;
+  background:rgba(242,231,207,.93);backdrop-filter:blur(9px);
+  border-bottom:1px solid var(--line);
+  display:flex;justify-content:center;flex-wrap:wrap;gap:8px;
+  padding:14px 14px 16px;box-shadow:0 6px 18px rgba(78,58,28,.10);
+}
+nav::after{
+  content:"";position:absolute;left:0;right:0;bottom:-4px;height:5px;
+  background:repeating-linear-gradient(90deg,var(--gold) 0 7px,transparent 7px 14px);opacity:.28;
+}
+.tab{
+  border:1px solid var(--line);
+  background:linear-gradient(180deg,#fdf8ec,#f0e5cb);
+  color:var(--ink-soft);padding:9px 20px;border-radius:4px;cursor:pointer;
+  font-family:var(--kai);font-weight:400;font-size:1.04rem;letter-spacing:.14em;
+  transition:.28s;box-shadow:0 2px 0 rgba(140,110,60,.18);
+}
+.tab:hover{border-color:var(--cinnabar);color:var(--cinnabar);transform:translateY(-2px);}
+.tab.active{
+  background:linear-gradient(160deg,#b1331f,#8a2315);color:#fdf3e2;border-color:#7a1e13;
+  box-shadow:0 5px 16px rgba(122,30,19,.38), inset 0 0 0 1px rgba(253,243,226,.32);
+  transform:translateY(-1px);
+}
+
+/* ===== Layout ===== */
+main{max-width:940px;margin:0 auto;padding:46px 20px 90px;position:relative;z-index:2;}
+section{display:none;}
+section.show{display:block;animation:fade .55s ease both;}
+@keyframes fade{from{opacity:0;transform:translateY(16px);filter:blur(3px);}to{opacity:1;transform:none;filter:blur(0);}}
+
+.sec-tag{
+  display:inline-flex;align-items:center;gap:10px;color:var(--gold);
+  font-family:var(--song);font-weight:700;font-size:.85rem;letter-spacing:.32em;margin-bottom:10px;
+}
+.sec-tag::before{
+  content:"";width:11px;height:11px;background:var(--cinnabar);transform:rotate(45deg);
+  box-shadow:inset 0 0 0 2px rgba(252,246,231,.45);
+}
+h2{
+  font-family:var(--kai);font-weight:700;
+  font-size:clamp(1.6rem,4.4vw,2.25rem);
+  letter-spacing:.1em;margin-bottom:8px;line-height:1.5;
+}
+h2::after{
+  content:"";display:block;width:132px;height:6px;margin-top:12px;
+  background:linear-gradient(90deg,var(--cinnabar) 0%,rgba(160,44,30,.22) 70%,transparent 100%);
+  border-radius:4px 14px 14px 4px;
+}
+.thesis{
+  position:relative;
+  background:linear-gradient(120deg, rgba(160,44,30,.09), rgba(252,246,231,.2) 60%),var(--card);
+  border:1px solid var(--line);border-left:5px solid var(--cinnabar);
+  padding:18px 22px;border-radius:0 10px 10px 0;margin:22px 0 30px;font-size:1.02rem;
+  box-shadow:var(--shadow);
+}
+.thesis::after{
+  content:"";position:absolute;right:12px;bottom:12px;width:24px;height:24px;
+  border-right:2px solid var(--gold);border-bottom:2px solid var(--gold);opacity:.55;
+}
+h3{
+  font-family:var(--kai);font-weight:700;
+  font-size:1.36rem;letter-spacing:.08em;line-height:1.7;
+  margin:36px 0 14px;display:flex;align-items:center;gap:12px;
+  padding-bottom:8px;border-bottom:1px solid var(--line-soft);
+}
+h3 .dot{width:11px;height:11px;flex:none;transform:rotate(45deg);box-shadow:0 0 0 3px rgba(255,255,255,.5);}
+.c-phen .dot{background:var(--gold);}
+.c-anti .dot{background:var(--cinnabar);}
+.c-analy .dot{background:var(--jade);}
+.c-synth .dot{background:var(--ink);}
+p{margin-bottom:13px;}
+.note{color:var(--ink-soft);font-size:.94rem;}
+blockquote{
+  border-left:4px solid var(--gold);
+  background:linear-gradient(180deg,#f6ecd6,#efe2c4);
+  background-image:var(--ruled);
+  padding:16px 20px;margin:16px 0;border-radius:0 8px 8px 0;font-size:.98rem;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.5), 0 4px 14px rgba(78,58,28,.08);
+}
+
+/* ===== Cards / accordions 信摺 ===== */
+.card{
+  position:relative;background:var(--card);border:1px solid var(--line);border-radius:8px;
+  box-shadow:0 6px 20px rgba(78,58,28,.10);margin-bottom:16px;overflow:hidden;transition:.3s;
+}
+.card::before{
+  content:"";position:absolute;left:0;right:0;top:0;height:3px;z-index:2;
+  background:linear-gradient(90deg,var(--cinnabar),var(--gold) 45%,transparent);opacity:.6;
+}
+.card:hover{box-shadow:0 12px 28px rgba(78,58,28,.16);transform:translateY(-2px);}
+.acc-head{
+  width:100%;text-align:left;
+  background:linear-gradient(180deg,rgba(255,252,242,.6),transparent);
+  border:none;cursor:pointer;
+  font-family:var(--song);font-weight:700;font-size:1rem;color:var(--ink);
+  padding:17px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;
+  letter-spacing:.04em;line-height:1.7;transition:.25s;
+}
+.acc-head:hover{color:var(--cinnabar);}
+.acc-head .arrow{transition:.35s;color:var(--cinnabar);flex:none;font-size:1rem;}
+.acc-head[aria-expanded="true"]{color:var(--cinnabar);}
+.acc-head[aria-expanded="true"] .arrow{transform:rotate(90deg);}
+.acc-body{max-height:0;overflow:hidden;transition:max-height .45s ease;padding:0 20px;}
+.acc-body.open{padding-bottom:18px;}
+.acc-body p{border-top:1px dashed var(--line);padding-top:14px;}
+
+/* ===== Two-column contrast ===== */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+@media(max-width:680px){.duo{grid-template-columns:1fr;}}
+.panel{
+  position:relative;border:1px solid var(--line);border-radius:10px;padding:22px 20px;
+  background:var(--card);box-shadow:var(--shadow);
+  background-image:linear-gradient(180deg,rgba(255,252,242,.7),transparent 40%),var(--lattice);
+}
+.panel::after{
+  content:"";position:absolute;top:12px;right:12px;width:16px;height:16px;
+  border-top:2px solid var(--gold);border-right:2px solid var(--gold);opacity:.45;
+}
+.panel.obj{border-top:4px solid var(--cinnabar);}
+.panel.sub{border-top:4px solid var(--jade);}
+.panel h4{
+  font-family:var(--kai);font-weight:700;font-size:1.28rem;letter-spacing:.1em;
+  margin-bottom:12px;padding-bottom:9px;border-bottom:1px solid var(--line);line-height:1.6;
+}
+.panel.obj h4{color:var(--cinnabar);}
+.panel.sub h4{color:var(--jade);}
+.panel ul{list-style:none;}
+.panel li{padding:9px 0;border-bottom:1px dashed var(--line);font-size:.95rem;}
+.panel li:last-child{border-bottom:none;}
+.panel li::before{content:"◆ ";font-size:.76rem;}
+.panel.obj li::before{color:var(--cinnabar);}
+.panel.sub li::before{color:var(--jade);}
+
+/* ===== Variant comparator 木牘 ===== */
+.variant{display:flex;flex-wrap:wrap;gap:12px;margin:18px 0;}
+.v-chip{
+  border:1px solid var(--line);
+  background:linear-gradient(180deg,#fdf8ec,#ece0c2);
+  padding:12px 20px;border-radius:5px;cursor:pointer;
+  font-family:var(--kai);font-weight:700;font-size:1.22rem;letter-spacing:.14em;
+  transition:.24s;color:var(--ink);box-shadow:0 3px 0 rgba(140,110,60,.22);
+}
+.v-chip:hover{transform:translateY(-2px);border-color:var(--gold);color:var(--cinnabar);}
+.v-chip.sel{
+  background:linear-gradient(180deg,#3b3229,#221d16);color:#f2e5c8;border-color:#221d16;
+  box-shadow:0 3px 0 rgba(60,45,20,.4), inset 0 0 0 1px rgba(165,128,46,.55);
+}
+.v-detail{
+  position:relative;background:linear-gradient(180deg,#f8efda,#f0e4c7);
+  border:1px dashed var(--gold);border-radius:8px;padding:20px 22px;font-size:.98rem;
+  box-shadow:inset 0 0 0 4px rgba(252,246,231,.55);
+}
+.v-detail::before{
+  content:"";position:absolute;left:10px;top:10px;width:18px;height:18px;
+  border-left:2px solid var(--cinnabar);border-top:2px solid var(--cinnabar);opacity:.5;
+}
+
+/* ===== Reveal quiz ===== */
+.qa{
+  position:relative;border:1px solid var(--line);border-left:5px solid var(--cinnabar);
+  border-radius:8px;background:var(--card);background-image:var(--ruled);
+  box-shadow:var(--shadow);padding:20px 22px;margin-bottom:16px;
+}
+.qa .q{
+  font-family:var(--kai);font-weight:700;font-size:1.16rem;
+  letter-spacing:.05em;margin-bottom:14px;line-height:1.8;
+}
+.reveal-btn{
+  background:linear-gradient(160deg,#3d7568,#265046);color:#f4efe0;
+  border:none;border-radius:5px;padding:9px 20px;cursor:pointer;
+  font-family:var(--kai);font-weight:400;font-size:1.02rem;letter-spacing:.16em;
+  transition:.22s;box-shadow:0 3px 0 var(--jade-dark), 0 7px 16px rgba(38,80,70,.28);
+}
+.reveal-btn:hover{filter:brightness(1.08);transform:translateY(-1px);}
+.reveal-btn:active{transform:translateY(2px);box-shadow:0 1px 0 var(--jade-dark);}
+.qa .a{display:none;margin-top:14px;border-top:1px dashed var(--line);padding-top:14px;}
+.qa .a.show{display:block;animation:fade .4s ease;}
+
+/* ===== Flow diagram ===== */
+.flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:14px;margin:22px 0;}
+.flow .step{
+  flex:1;min-width:170px;
+  background:linear-gradient(180deg,#fffaf0,#f4e9d1);
+  border:1px solid var(--line);border-top:4px solid var(--gold);
+  border-radius:8px;padding:20px 16px;text-align:center;box-shadow:var(--shadow);position:relative;
+}
+.flow .step::after{
+  content:"";position:absolute;inset:6px;border:1px solid var(--line-soft);border-radius:5px;pointer-events:none;
+}
+.flow .step b{
+  display:block;font-family:var(--kai);font-weight:700;font-size:1.28rem;
+  color:var(--cinnabar);letter-spacing:.14em;margin-bottom:8px;
+}
+.flow .arrow-h{align-self:center;color:var(--gold);font-size:1.7rem;flex:none;}
+@media(max-width:680px){.flow{flex-direction:column;}.flow .arrow-h{transform:rotate(90deg);align-self:center;}}
+
+.tag-pill{
+  display:inline-block;background:linear-gradient(180deg,#fdf8ec,#eee2c6);
+  border:1px solid var(--line);border-radius:3px;padding:4px 14px;
+  font-size:.85rem;color:var(--ink-soft);margin:4px 5px 0 0;letter-spacing:.05em;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.6);
+}
+.callout{
+  position:relative;
+  background:linear-gradient(120deg,rgba(51,101,90,.12),rgba(252,246,231,.25) 65%),var(--card);
+  border:1px solid var(--line);border-left:5px solid var(--jade);
+  padding:18px 22px;border-radius:0 10px 10px 0;margin:20px 0;box-shadow:var(--shadow);
+}
+.callout::before{
+  content:"";position:absolute;right:14px;top:14px;width:22px;height:22px;
+  border-right:2px solid var(--jade);border-top:2px solid var(--jade);opacity:.4;
+}
+.warn{
+  position:relative;
+  background:linear-gradient(120deg,rgba(165,128,46,.16),rgba(252,246,231,.25) 65%),var(--card);
+  border:1px solid var(--line);border-left:5px solid var(--gold);
+  padding:18px 22px;border-radius:0 10px 10px 0;margin:20px 0;box-shadow:var(--shadow);
+}
+.warn::before{
+  content:"";position:absolute;right:14px;top:14px;width:22px;height:22px;
+  border-right:2px solid var(--gold);border-top:2px solid var(--gold);opacity:.5;
+}
+
+/* ===== Footer ===== */
+footer{
+  position:relative;z-index:2;text-align:center;color:var(--ink-soft);
+  font-size:.9rem;padding:34px 20px 42px;border-top:1px solid var(--line);letter-spacing:.08em;
+  background:linear-gradient(180deg,transparent,rgba(165,128,46,.10));
+}
+footer::before{
+  content:"";position:absolute;left:0;right:0;top:-4px;height:5px;
+  background:repeating-linear-gradient(90deg,var(--gold) 0 7px,transparent 7px 14px);opacity:.25;
+}
+.foot-orn{display:block;margin:0 auto 14px;opacity:.75;}
+
+/* ===== Reveal animation ===== */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .75s ease,transform .75s ease;}
+.reveal.in{opacity:1;transform:none;}
+
+/* ===== Responsive ===== */
+@media(max-width:760px){
+  .lychee-art{width:88px;top:14px;right:6px;opacity:.55;}
+  .cloud-art{display:none;}
+  .scroll-body{padding:40px 16px 34px;}
+  .poem-box{padding:38px 18px 22px;}
+  .poem-box::after{width:20px;height:20px;top:12px;right:12px;}
+  .rod::before,.rod::after{width:18px;height:18px;top:-2px;}
+  .rod::before{left:-9px;}.rod::after{right:-9px;}
+  h3{font-size:1.2rem;}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;}
+  .reveal{opacity:1;transform:none;}
+}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<header>
+  <svg class="mtn" viewBox="0 0 1440 260" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 196 L92 148 L162 184 L252 108 L332 174 L422 128 L522 198 L612 148 L702 192 L802 118 L902 178 L992 142 L1092 198 L1182 158 L1282 202 L1372 162 L1440 198 L1440 260 L0 260Z" fill="#7d9a8c" opacity=".26"/>
+    <path d="M0 228 L122 194 L232 224 L342 180 L472 228 L592 200 L702 234 L832 194 L962 230 L1082 204 L1202 236 L1322 208 L1440 232 L1440 260 L0 260Z" fill="#5c7a6d" opacity=".22"/>
+    <ellipse cx="360" cy="212" rx="260" ry="16" fill="#fff" opacity=".35"/>
+    <ellipse cx="1040" cy="222" rx="300" ry="14" fill="#fff" opacity=".3"/>
+  </svg>
+
+  <div class="scroll">
+    <div class="rod" aria-hidden="true"></div>
+    <div class="scroll-body">
+      <svg class="lychee-art" viewBox="0 0 200 290" aria-hidden="true">
+        <defs>
+          <radialGradient id="lyg" cx="34%" cy="28%" r="74%">
+            <stop offset="0%" stop-color="#e8795d"/>
+            <stop offset="55%" stop-color="#bf3a29"/>
+            <stop offset="100%" stop-color="#7c1c14"/>
+          </radialGradient>
+          <linearGradient id="lfg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#6a9463"/>
+            <stop offset="100%" stop-color="#2b4c38"/>
+          </linearGradient>
+          <pattern id="bump" width="9" height="9" patternUnits="userSpaceOnUse">
+            <circle cx="4.5" cy="4.5" r="1.7" fill="#fff" opacity=".17"/>
+            <circle cx="0" cy="0" r="1.2" fill="#4a0f09" opacity=".10"/>
+          </pattern>
+        </defs>
+        <path d="M98 4 C93 40 106 62 101 98 C98 124 105 142 101 170" fill="none" stroke="#6d4b30" stroke-width="3.6" stroke-linecap="round"/>
+        <path d="M101 152 C85 166 72 178 65 200" fill="none" stroke="#6d4b30" stroke-width="2.8" stroke-linecap="round"/>
+        <path d="M101 134 C119 148 131 158 139 180" fill="none" stroke="#6d4b30" stroke-width="2.8" stroke-linecap="round"/>
+        <g fill="url(#lfg)" opacity=".93">
+          <path d="M98 28 C70 15 43 23 28 44 C51 61 84 55 98 28 Z"/>
+          <path d="M101 50 C129 35 158 43 172 64 C147 83 115 77 101 50 Z"/>
+          <path d="M100 84 C75 77 52 87 43 106 C66 119 93 108 100 84 Z"/>
+        </g>
+        <g stroke="#2b4c38" stroke-width="1" opacity=".45" fill="none">
+          <path d="M32 45 C55 42 78 36 96 30"/>
+          <path d="M168 63 C145 62 120 57 103 51"/>
+          <path d="M46 105 C66 100 86 92 99 85"/>
+        </g>
+        <circle cx="62" cy="216" r="27" fill="url(#lyg)"/>
+        <circle cx="62" cy="216" r="27" fill="url(#bump)"/>
+        <circle cx="141" cy="200" r="24" fill="url(#lyg)"/>
+        <circle cx="141" cy="200" r="24" fill="url(#bump)"/>
+        <circle cx="103" cy="250" r="29" fill="url(#lyg)"/>
+        <circle cx="103" cy="250" r="29" fill="url(#bump)"/>
+        <g fill="#fff" opacity=".22">
+          <ellipse cx="53" cy="205" rx="7" ry="4.5" transform="rotate(-30 53 205)"/>
+          <ellipse cx="133" cy="191" rx="6" ry="4" transform="rotate(-30 133 191)"/>
+          <ellipse cx="93" cy="238" rx="8" ry="5" transform="rotate(-30 93 238)"/>
+        </g>
+      </svg>
+
+      <svg class="cloud-art" viewBox="0 0 220 70" aria-hidden="true">
+        <g fill="none" stroke="#a5802e" stroke-width="2" opacity=".55">
+          <path d="M12 50 C4 50 4 38 14 38 C10 28 22 22 28 30 C32 20 48 20 50 32 C60 30 64 42 54 48 C60 54 52 62 44 58 C38 66 24 64 24 56 C18 60 12 58 12 50 Z"/>
+          <path d="M96 44 C90 44 90 34 98 34 C96 26 108 22 112 30 C118 24 130 28 128 38 C136 40 134 50 124 50 C122 58 108 58 106 50 C100 52 96 50 96 44 Z"/>
+          <path d="M160 52 C154 52 154 42 162 42 C160 34 172 30 176 38 C182 32 194 36 192 46 C200 48 198 58 188 58 C186 64 172 64 170 58 C164 60 160 58 160 52 Z"/>
+        </g>
+      </svg>
+
+      <div class="seal">思辨解讀</div>
+      <h1>一啖荔枝，何以「不辭」？</h1>
+      <div class="subtitle">以蘇軾〈食荔支〉為文本的三重邏輯思辨</div>
+      <div class="poem-box">
+        <div class="poem-line">羅浮山下四時春，盧橘楊梅次第新。</div>
+        <div class="poem-line">日啖荔支三百顆，不辭長作嶺南人。</div>
+        <div class="poem-author">—— 蘇軾〈食荔支〉，貶謫惠州時期</div>
+      </div>
+    </div>
+    <div class="rod" aria-hidden="true"></div>
+  </div>
+</header>
+
+<nav>
+<button class="tab active" data-target="intro">導讀</button>
+<button class="tab" data-target="q1">一・現象與本質</button>
+<button class="tab" data-target="q2">二・主觀與客觀</button>
+<button class="tab" data-target="q3">三・價值與限制</button>
+<button class="tab" data-target="synth">綜合辯證</button>
+</nav>
+
+<main>
+<!-- ================= 導讀 ================= -->
+<section id="intro" class="show">
+<div class="sec-tag">INTRODUCTION</div>
+<h2>為什麼一首「吃水果」的詩值得思辨？</h2>
+<p>表面上，〈食荔支〉只是詩人享受荔枝、讚美嶺南風物的輕鬆之作。但若結合講義所提供的歷史脈絡——蘇軾正處於人生第三次、也是最偏遠的一次貶謫之中——這首詩便成了一道值得推理的「邏輯題」：<b>當外在處境極其艱困，內在卻書寫得如此喜悅，我們該如何理解這種矛盾？</b></p>
+<div class="callout">
+<b>思辨方法：正・反・合</b><br>
+本網頁採用辯證法（正題→反題→合題）逐層推進：先陳述文本呈現的「表面」，再提出足以推翻表面的「質疑」，最後以證據推理出更深層的「統一理解」。
+</div>
+<h3><span class="dot" style="background:var(--cinnabar);width:10px;height:10px;border-radius:50%;display:inline-block;"></span>三個核心命題</h3>
+<div class="flow">
+<div class="step"><b>命題一</b>現象與本質的辨析：詩中的「樂」，是真情還是偽裝？</div>
+<div class="arrow-h">→</div>
+<div class="step"><b>命題二</b>主觀感受與客觀處境：心靈是處境的鏡子，還是處境的轉換器？</div>
+<div class="arrow-h">→</div>
+<div class="step"><b>命題三</b>價值選擇與條件限制：限制扼殺了選擇，還是成就了選擇？</div>
+</div>
+<h3 style="margin-top:30px;">背景速覽（解題必備前提）</h3>
+<div class="card">
+<button class="acc-head" aria-expanded="false">▸ 蘇軾為何來到惠州？<span class="arrow">▸</span></button>
+<div class="acc-body"><p>紹聖元年（1094）新黨再起，章惇為相，對「元祐黨人」展開迫害。蘇軾先被貶英州，途中又遭章惇、蔡京等人不斷攻擊，哲宗兩度加重處分，最終貶為寧遠軍節度副使、<b>惠州安置，不得簽署公事</b>——這是一次政治上的「死刑緩期執行」。</p></div>
+</div>
+<div class="card">
+<button class="acc-head" aria-expanded="false">▸ 嶺南在宋代意味著什麼？<span class="arrow">▸</span></button>
+<div class="acc-body"><p>講義指出：「嶺南兩廣一帶在宋時為蠻荒之地，罪臣多被流放至此，遷客逐臣到此處，往往頗多<b>哀怨嗟嘆之辭</b>。」氣候炎熱、疫病多，人稱「蠻瘼之邦」。這正是理解「不辭」二字重量的關鍵前提。</p></div>
+</div>
+<div class="card">
+<button class="acc-head" aria-expanded="false">▸ 蘇軾的三次貶謫軌跡？<span class="arrow">▸</span></button>
+<div class="acc-body">
+<p>黃州（元豐三年，烏臺詩案）→ 惠州（紹聖元年）→ 儋州／海南島（紹聖四年）。<b>一次比一次偏遠，一次比一次絕望</b>。然而講義同時指出：這十幾年貶謫歲月，反而是他「思想與文學發展的最高峰」。</p>
+</div>
+</div>
+<p style="margin-top:24px;text-align:center;">
+<button class="reveal-btn" style="background:linear-gradient(160deg,#b1331f,#8a2315);box-shadow:0 3px 0 var(--cinnabar-dark),0 7px 16px rgba(122,30,19,.3);" onclick="switchTab('q1')">開始命題一 →</button>
+</p>
+</section>
+
+<!-- ================= Q1 現象與本質 ================= -->
+<section id="q1">
+<div class="sec-tag">QUESTION 01</div>
+<h2>現象與本質的辨析</h2>
+<div class="thesis"><b>核心命題：</b>〈食荔支〉呈現的「樂」，究竟是本質上的愉悅，還是本質上的悲涼所披上的現象外衣？</div>
+<h3 class="c-phen"><span class="dot"></span>正題：現象層——一首詠物頌美之詩</h3>
+<p>從文本表面看，這是一首純粹的讚美詩：</p>
+<blockquote>
+「羅浮山下四時春，盧橘楊梅次第新」——以四時皆春的羅浮山與推陳出新的盧橘、楊梅，<b>極寫荔枝生長環境之優美</b>，讚頌惠州風物之佳。<br>
+「日啖荔支三百顆」——大啖荔枝的酣暢。<br>
+「不辭長作嶺南人」——願永遠當嶺南人。
+</blockquote>
+<p>現象層的事實：荔枝是嶺南特產，蘇軾於紹聖二年（被貶惠州第二年）初食，品種為「火山」。他確實愛吃甜食，嶺南佳果為失意的貶謫生活帶來「絲絲甜蜜」。</p>
+<h3 class="c-anti"><span class="dot"></span>反題：質疑——三個足以推翻「純然之樂」的證據</h3>
+<div class="card">
+<button class="acc-head" aria-expanded="false">▸ 證據一：「不辭」二字，恰恰承認了嶺南是「應辭」之地<span class="arrow">▸</span></button>
+<div class="acc-body"><p>「辭」意為「推卻、不接受」。如果長居嶺南本是天大的好事，何須「不辭」？正因為嶺南是罪臣流放、人人避之唯恐不及的蠻荒之地，「不辭」才構成一個有意義的抉擇。<b>這個詞本身就泄露了苦難的存在</b>——它是對苦難的承認，而非否認。</p></div>
+</div>
+<div class="card">
+<button class="acc-head" aria-expanded="false">▸ 證據二：「三百顆」是誇飾，非寫實——它指向情感而非事實<span class="arrow">▸</span></button>
+<div class="acc-body"><p>講義指出「三百顆」借用韋應物「書後欲題三百顆」之典，修辭上是「誇飾」。一天吃三百顆荔枝在生理上不可能；蘇軾刻意使用不可能的數字，說明他要表達的是<b>情感的強度</b>，而非口腹的真實。誇張，正是內心需要被填補的信號。</p></div>
+</div>
+<div class="card">
+<button class="acc-head" aria-expanded="false">▸ 證據三：講義明示——此詩本質是「貶謫心態」的書寫<span class="arrow">▸</span></button>
+<div class="acc-body"><p>講義原文：「<b>到了宋代，以荔枝題材淋漓盡致地寫出貶謫心態，則以蘇軾為第一。</b>」荔枝在此不是目的，而是媒介；詩的真正主題不是水果，而是「貶謫心態」。現象是詠荔支，本質是寫放逐。</p></div>
+</div>
+<h3 class="c-analy"><span class="dot"></span>辨析：文本異文——一個字，三種心境</h3>
+<p>講義收錄了本詩結句的不同版本。比較它們，最能看出現象（文字）與本質（心境）的細微對應。點選各版本：</p>
+<div class="variant">
+<button class="v-chip sel" data-v="buci">不辭長作嶺南人</button>
+<button class="v-chip" data-v="bufang">不妨長作嶺南人</button>
+<button class="v-chip" data-v="zongjiao">總教長作嶺南人</button>
+</div>
+<div class="v-detail" id="v-detail">
+<b>「不辭」（今本／講義採用）：</b>「不推卻、願意接受」。此版本承認嶺南之苦本應被推辭，卻主動選擇接受——<b>苦難被正視，然後被跨越</b>。語氣最沉重，也最能彰顯主體意志。
+</div>
+<h3 class="c-synth"><span class="dot"></span>合題：現象與本質的辯證統一</h3>
+<div class="callout">
+<p><b>結論：</b>蘇軾既不是「假裝快樂」（那會使詩淪為虛偽的粉飾），也不是「單純快樂」（那會使他無視放逐的殘酷）。他的「樂」是一種<b>超越性的曠達</b>——在看清並承認苦難本質之後，仍主動選擇以審美與幽默去轉化它。</p>
+<p>正因一般遷客逐臣到此「往往頗多哀怨嗟嘆之辭」，蘇軾的「樂」才顯得反常而珍貴：<b>這不是逃避命運，而是對命運最優雅的反抗與昇華。</b></p>
+</div>
+<p><span class="tag-pill">現象：詠荔支、頌風物</span><span class="tag-pill">本質：貶謫心態</span><span class="tag-pill">統一：超越性的曠達</span></p>
+</section>
+
+<!-- ================= Q2 主觀與客觀 ================= -->
+<section id="q2">
+<div class="sec-tag">QUESTION 02</div>
+<h2>主觀感受與客觀處境的關係</h2>
+<div class="thesis"><b>核心命題：</b>蘇軾在惠州的「樂」，是客觀處境的真實反映，還是主觀心靈的重新創造？二者究竟誰決定誰？</div>
+<h3 class="c-phen"><span class="dot"></span>正題：把「處境」與「感受」並列對照</h3>
+<div class="duo">
+<div class="panel obj">
+<h4>客觀處境（被給予的現實）</h4>
+<ul>
+<li>政治：遭章惇等迫害，一贬再贬，「不得簽署公事」，形同廢人</li>
+<li>地理：嶺南為「蠻瘼之邦」，炎熱多疫，中原罕見其物</li>
+<li>身體：五十九歲，因舟車勞頓患嚴重痔瘡</li>
+<li>情感：遣散家人，僅五僕隨行；愛妾朝雲於紹聖三年病逝惠州，年三十四</li>
+<li>社會：罪臣身分，受監視，無實權</li>
+</ul>
+</div>
+<div class="panel sub">
+<h4>主觀感受（心靈的呈現）</h4>
+<ul>
+<li>「居三年，泊然無所蒂介，人無贤愚，皆得其欢心」（《宋史》）</li>
+<li>眼中所見：「羅浮山下四時春」——荒遠之地竟成永春之境</li>
+<li>「浩然天地間，唯我獨也正」——坦然與高潔</li>
+<li>恬淡知足，於悲涼之中夾雜著釋然</li>
+<li>以豁達超然態度開荒種地、為百姓做事</li>
+</ul>
+</div>
+</div>
+<h3 class="c-anti"><span class="dot"></span>反題：質疑——若感受由處境決定，他「應該」哀怨才對</h3>
+<p>這裡可以构造一個邏輯推論：</p>
+<blockquote>
+大前提：若主觀感受完全由客觀處境決定，則處境愈苦，感受愈苦。<br>
+小前提：蘇軾的客觀處境極苦（贬謫、疾病、喪偶、孤絕）。<br>
+推論結果：蘇軾「應該」哀怨嗟嘆。<br>
+<b>但事實相反</b>——他寫出了「四時春」「三百顆」。<br>
+∴ 大前提不成立：<b>主觀感受並非客觀處境的被動鏡像。</b>
+</blockquote>
+<div class="warn">
+<b>進一步佐證：黃州與惠州的心境對比。</b>初貶黃州時，蘇軾寫「空庖煮寒菜，破灶燒濕葦」，滿是失意苦悶；再貶惠州時，處境<b>更</b>苦，心情卻<b>更</b>平靜。若感受由處境線性決定，此對比無從解釋——它只能用心靈的成長與轉化能力來說明。
+</div>
+<h3 class="c-synth"><span class="dot"></span>合題：心靈不是鏡子，而是轉化器</h3>
+<div class="flow">
+<div class="step"><b>客觀處境</b>嶺南蠻荒、荔枝甜美</div>
+<div class="arrow-h">→</div>
+<div class="step"><b>心靈轉化</b>審美、佛老思想、幽默</div>
+<div class="arrow-h">→</div>
+<div class="step"><b>主觀感受</b>四時春、不辭長作嶺南人</div>
+</div>
+<div class="callout">
+<p><b>結論：</b>主觀感受與客觀處境並非「決定」關係，而是「交互」關係。</p>
+<p>① 處境提供原料：沒有嶺南的荔枝與山水，便沒有這首詩的素材——主觀之樂並非憑空。<br>
+② 心靈賦予形式：同樣的嶺南，在他人眼中是瘴癘絕境，在蘇軾眼中是四時春——<b>詮釋權在心靈手中</b>。<br>
+③ 最終，主體性得以確立：「浩然天地間，唯我獨也正」標誌著一種不依賴外部境遇的內在自足。</p>
+</div>
+<p><span class="tag-pill">處境：被給予</span><span class="tag-pill">感受：被創造</span><span class="tag-pill">關鍵：心靈的能動性</span></p>
+</section>
+
+<!-- ================= Q3 價值與限制 ================= -->
+<section id="q3">
+<div class="sec-tag">QUESTION 03</div>
+<h2>價值選擇與條件限制的交互作用</h2>
+<div class="thesis"><b>核心命題：</b>在重重限制之下，蘇軾還「選擇」得了什麼？條件限制究竟是取消了選擇，反而凸顯、甚至成就了選擇？</div>
+<h3 class="c-phen"><span class="dot"></span>正題：列出「限制」與「選擇」兩張清單</h3>
+<div class="duo">
+<div class="panel obj">
+<h4>條件限制（他無法選擇的）</h4>
+<ul>
+<li>政治：被貶的身份、無實權、隨時可能再遭加重處分</li>
+<li>地理：偏遠絕境，與中原文化圈隔絕</li>
+<li>生理：年近六旬，病痛纏身</li>
+<li>社會：家人遣散、摯愛凋零的孤獨</li>
+</ul>
+</div>
+<div class="panel sub">
+<h4>價值選擇（他仍然選擇的）</h4>
+<ul>
+<li>態度之擇：選曠達，不選哀怨</li>
+<li>生計之擇：開荒種地，自給自足</li>
+<li>入世之擇：盡其所能為當地百姓做事</li>
+<li>精神之擇：寫「和陶詩」建構精神家園、與僧道交往</li>
+<li>審美之擇：以荔枝、山水安頓生命</li>
+</ul>
+</div>
+</div>
+<h3 class="c-anti"><span class="dot"></span>反題：質疑——在無權無勢之處，「選擇」還有意義嗎？</h3>
+<p>可以设想一個懷疑者的論點：蘇軾既「不得簽署公事」，政治上已被廢黜；他的一切「曠達」會不會只是一種無可奈何的自我安慰（精神勝利法）？</p>
+<div class="card">
+<button class="acc-head" aria-expanded="false">▸ 反駁一：他選擇了具體的行動，而非僅止於心態<span class="arrow">▸</span></button>
+<div class="acc-body"><p>講義指出蘇軾在惠州「開荒種地自給自足，並盡其所能地為當地的百姓做事情」。這說明他的價值選擇落地為真實行動——自我安慰者不會去墾荒、不會去幫百姓。<b>行動證明選擇是真實的，而非麻醉。</b></p></div>
+</div>
+<div class="card">
+<button class="acc-head" aria-expanded="false">▸ 反駁二：限制反而催生了創造的高峰<span class="arrow">▸</span></button>
+<div class="acc-body"><p>講義明言：被貶謫的十幾年是蘇軾「思想與文學發展的最高峰」；寓惠期間他寫下大量山水詩與四十七首「和陶詩」。若限制只是壓抑，便不會有創造。<b>限制在此成了創造的催化劑</b>——遠離權力中心，反而讓他更深入民間、自然與哲思。</p></div>
+</div>
+<div class="card">
+<button class="acc-head" aria-expanded="false">▸ 反駁三：「一肚皮不合時宜」證明價值核心的一貫性<span class="arrow">▸</span></button>
+<div class="acc-body"><p>朝雲笑言蘇軾「一肚子不合時宜」，蘇軾捧腹大笑並深以為然。這句玩笑揭示：無論居廟堂還是處江湖，他的價值內核始終如一。<b>境遇改變了，但他沒有改變自己</b>——這正是「選擇」最有力的證據。</p></div>
+</div>
+<h3 class="c-synth"><span class="dot"></span>合題：限制與選擇的辯證交互</h3>
+<div class="flow">
+<div class="step"><b>條件限制</b>壓縮外在自由</div>
+<div class="arrow-h">→</div>
+<div class="step"><b>價值選擇</b>彰顯內在自由</div>
+<div class="arrow-h">→</div>
+<div class="step"><b>交互結果</b>限制被轉化為創造與昇華</div>
+</div>
+<div class="callout">
+<p><b>結論：</b>條件限制與價值選擇之間存在三重交互作用：</p>
+<p>① <b>限制不取消選擇，而是收窄選擇的戰場</b>——蘇軾失去了政治選擇權，卻保有態度、生計、創作、待人處世的選擇權。<br>
+② <b>選擇賦予限制意義</b>——同樣的貶謫，因選擇曠達而成為「此心安處是吾鄉」的修行，而非單純的刑罰。<br>
+③ <b>限制反哺選擇</b>——正因其艱困，選擇才顯得有重量；「被貶謫的十幾年反而是思想與文學的高峰」正是這種反哺的實證。</p>
+<p>「日啖荔支三百顆，不辭長作嶺南人」因此可讀作一句價值宣言：<b>人無法選擇被拋入的境遇，卻永遠可以選擇以何種姿態面對它。</b></p>
+</div>
+</section>
+
+<!-- ================= 綜合 ================= -->
+<section id="synth">
+<div class="sec-tag">SYNTHESIS</div>
+<h2>綜合辯證與自我反思</h2>
+<h3>三重命題如何環環相扣？</h3>
+<div class="flow">
+<div class="step"><b>命題一</b>辨識出現象背後的貶謫本質——確認「苦」是真的</div>
+<div class="arrow-h">→</div>
+<div class="step"><b>命題二</b>說明心靈能轉化而非被處境決定——確認「樂」是創造的</div>
+<div class="arrow-h">→</div>
+<div class="step"><b>命題三</b>指出這種創造源於主動的價值選擇——確認「選擇」是自由的</div>
+</div>
+<div class="callout">
+<p><b>總綜合：</b>蘇軾在〈食荔支〉中完成的，是一次「以主觀心靈穿透客觀限制、以價值選擇重新定義處境意義」的示範。荔枝只是引子，真正的果實是：<b>在最不自由的境遇中，活出最自由的心靈。</b></p>
+</div>
+<h3>反思測驗（先思考，再揭示參考思路）</h3>
+<div class="qa">
+<div class="q">Q1：如果把「不辭」換成「樂意」，詩的意涵會失去什麼？</div>
+<button class="reveal-btn">揭示思路</button>
+<div class="a"><p>「樂意」假設嶺南本是好去處，抹去了苦難前提；「不辭」則承認苦難、再跨越苦難。換成「樂意」後，詩會從「曠達的抉擇」退化為「單純的享受」，貶謫心態的本質層便消失了，現象與本質的張力亦隨之瓦解。</p></div>
+</div>
+<div class="qa">
+<div class="q">Q2：有人說蘇軾的「樂」是一種自我欺騙。你如何用講義證據反駁？</div>
+<button class="reveal-btn">揭示思路</button>
+<div class="a"><p>自我欺騙者會否認現實，但蘇軾從未否認苦——「不辭」即承認；自我欺騙者往往消極退縮，但他開荒種地、為百姓做事、創作不輟。他的「樂」建立在對現實的清醒認知之上，屬於「看透之後依然熱愛」，與逃避式的自欺有本質區別。</p></div>
+</div>
+<div class="qa">
+<div class="q">Q3：為什麼「被貶謫的十幾年」反而成為蘇軾思想與文學的高峰？這說明了限制與創造的什麼關係？</div>
+<button class="reveal-btn">揭示思路</button>
+<div class="a"><p>限制剝奪了蘇軾的政治舞台，卻迫使他轉向內心、民間與自然，從而在貶謫中完成精神世界的重建（和陶詩、山水詩、佛老思想）。這說明：外在限制在特定主體條件下可轉化為創造的張力——限制不是創造的反面，而可能是創造的前提。</p></div>
+</div>
+<div class="qa">
+<div class="q">Q4：延伸應用——「一肚子不合時宜」與「不辭長作嶺南人」之間有何邏輯關聯？</div>
+<button class="reveal-btn">揭示思路</button>
+<div class="a"><p>「不合時宜」是蘇軾價值核心的一貫性（無論順逆都不改其志），「不辭長作嶺南人」是這種一貫性在絕境中的具體展現。前者是本質，後者是現象；正因為本質上「不合時宜」，他才能在任何境遇中「不辭」——價值選擇的穩定性，使條件限制失去了定義他的權力。</p></div>
+</div>
+<p style="margin-top:30px;text-align:center;">
+<button class="reveal-btn" style="background:linear-gradient(160deg,#3b3229,#221d16);box-shadow:0 3px 0 #171310,0 7px 16px rgba(30,25,18,.32);" onclick="switchTab('intro')">回到導讀</button>
+</p>
+</section>
+</main>
+
+<footer>
+<span class="foot-orn" aria-hidden="true">
+<svg viewBox="0 0 200 24" width="200" height="24">
+<path d="M6 12 H84" stroke="#a5802e" stroke-width="1" opacity=".8"/>
+<path d="M100 3 L109 12 L100 21 L91 12 Z" fill="#a02c1e"/>
+<path d="M100 7 L105 12 L100 17 L95 12 Z" fill="#f2e7cf"/>
+<path d="M116 12 H194" stroke="#a5802e" stroke-width="1" opacity=".8"/>
+</svg>
+</span>
+依據〈0930 課程講義：食荔支文本解讀〉與〈0923 課程講義：蘇軾在惠州〉整理・思辨式解讀
+</footer>
+
+<script>
+/* ===== Tab switching ===== */
+function switchTab(id){
+  document.querySelectorAll('section').forEach(s=>s.classList.remove('show'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('show');
+  document.querySelector('.tab[data-target="'+id+'"]').classList.add('active');
+  revealInSection(document.getElementById(id));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('.tab').forEach(t=>{
+  t.addEventListener('click',()=>switchTab(t.dataset.target));
+});
+
+/* ===== Accordions ===== */
+document.querySelectorAll('.acc-head').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const body=btn.nextElementSibling;
+    const open=btn.getAttribute('aria-expanded')==='true';
+    btn.setAttribute('aria-expanded',String(!open));
+    if(open){ body.classList.remove('open'); body.style.maxHeight='0'; }
+    else{ body.classList.add('open'); body.style.maxHeight=body.scrollHeight+'px'; }
+  });
+});
+
+/* ===== Variant comparator ===== */
+const vData={
+buci:'<b>「不辭」（今本／講義採用）：</b>「不推卻、願意接受」。此版本承認嶺南之苦本應被推辭，卻主動選擇接受——<b>苦難被正視，然後被跨越</b>。語氣最沉重，也最能彰顯主體意志與價值選擇。',
+bufang:'<b>「不妨」（《蘇東坡全集》）：</b>「無妨、何妨」，語氣更輕描淡寫、灑脫隨意。苦難的重量被淡化，突出一種「隨遇而安」的輕鬆感——曠達仍在，但「抉擇」的莊重感較弱。',
+zongjiao:'<b>「總教」（《錦繡中華歷代詩詞選》）：</b>「總使、總讓」，帶出一種「既然如此，那就這樣吧」的順受意味。介於主動與被動之間，更接近對命運的接納而非跨越。'
+};
+document.querySelectorAll('.v-chip').forEach(c=>{
+  c.addEventListener('click',()=>{
+    document.querySelectorAll('.v-chip').forEach(x=>x.classList.remove('sel'));
+    c.classList.add('sel');
+    document.getElementById('v-detail').innerHTML=vData[c.dataset.v];
+  });
+});
+
+/* ===== Quiz reveal ===== */
+document.querySelectorAll('.qa .reveal-btn').forEach(b=>{
+  b.addEventListener('click',()=>{
+    const a=b.parentElement.querySelector('.a');
+    a.classList.toggle('show');
+    b.textContent=a.classList.contains('show')?'收起思路':'揭示思路';
+  });
+});
+
+/* ===== Scroll reveal ===== */
+const revealSel='.card,.panel,.flow .step,.qa,.callout,.warn,blockquote,.thesis,.v-detail,.variant';
+document.querySelectorAll(revealSel).forEach(el=>el.classList.add('reveal'));
+function revealInSection(sec){
+  const items=sec.querySelectorAll('.reveal:not(.in)');
+  items.forEach((el,i)=>setTimeout(()=>el.classList.add('in'),Math.min(i,10)*70));
+}
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+    });
+  },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+}else{
+  document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+}
+const activeSec=document.querySelector('section.show');
+if(activeSec){ setTimeout(()=>revealInSection(activeSec),120); }
+window.addEventListener('resize',()=>{
+  document.querySelectorAll('.acc-body.open').forEach(b=>{ b.style.maxHeight=b.scrollHeight+'px'; });
+});
+</script>
+</body>
+</html>
